@@ -18,6 +18,11 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+}
+
 body {
     font-family: 'Plus Jakarta Sans', sans-serif;
     background-color: var(--bg-soft);
@@ -162,10 +167,11 @@ body {
 
 /* --- Hero --- */
 .hero {
-    min-height: 90vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     padding: 0 2rem;
+    scroll-snap-align: start;
 }
 
 .hero-container {
@@ -324,9 +330,14 @@ body {
 
 /* --- Features --- */
 .features {
+    min-height: 100vh;
     padding: 8rem 2rem;
     max-width: 1200px;
     margin: 0 auto;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .section-header {
@@ -393,10 +404,14 @@ body {
 
 /* --- Innovation --- */
 .innovation {
+    min-height: 100vh;
     padding: 8rem 2rem;
     background: var(--primary-green);
     color: var(--white);
     clip-path: polygon(0 5%, 100% 0%, 100% 95%, 0% 100%);
+    scroll-snap-align: start;
+    display: flex;
+    align-items: center;
 }
 
 .innovation-container {
@@ -454,9 +469,14 @@ body {
 
 /* --- Tech Stack --- */
 .tech {
+    min-height: 100vh;
     padding: 8rem 2rem;
     max-width: 1200px;
     margin: 0 auto;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .tech-grid {
@@ -493,6 +513,7 @@ body {
     padding: 4rem 2rem;
     background: #fdfdfd;
     border-top: 1px solid var(--glass-border);
+    scroll-snap-align: end;
 }
 
 .footer-content {

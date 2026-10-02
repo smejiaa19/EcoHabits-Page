@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
         burger.classList.toggle('toggle');
     });
 
-    // Close menu when link is clicked
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
             nav.classList.remove('active');
@@ -27,9 +26,27 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // --- Scroll Snap Implementation ---
+    // This ensures smooth transitions between sections
+    const sections = document.querySelectorAll('header, section, footer');
+
+    // Handle Navigation links with smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
     // Scroll Reveal Animation
     const observerOptions = {
-        threshold: 0.1
+        threshold: 0.2
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -40,15 +57,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    // Elements to reveal
     const revealElements = document.querySelectorAll('.feature-card, .cycle-step, .tech-item');
     revealElements.forEach(el => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(30px)';
-        el.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+        el.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
         observer.observe(el);
     });
 });
-
-// Add the 'revealed' class styles via JS for simplicity or you can add to CSS
-// But I'll add the CSS for it now to make it work perfectly
